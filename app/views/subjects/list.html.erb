@@ -12,9 +12,10 @@
 <body>
 	<div class="subject list">
 		<h2>Subjects</h2>
+		<%= link_to("<< Add new Subject", {:action => 'new'}, :class => 'new') %>
 		<table class="listing" summary="Subject List">
 			<tr class="header">
-				<th>&bsp;</th>
+				<th>&nbsp;</th>
 				<th>Subject</th>
 				<th>Visible</th>
 				<th>Pages</th>
@@ -28,7 +29,7 @@
 				<td class="center"><%= subject.pages.size %></td>
 				<td class="actions">
 					<%= link_to('Show', {:action => 'show', :id => subject.id}, :class => 'action show') %>
-				    <%= link_to('Edit', '#', :class => 'action edit') %>
+				    <%= link_to('Edit', {:action => 'edit', :id => subject.id}, :class => 'action edit') %>
 				    <%= link_to('Delete', '#', :class => 'action delete') %>
 				</td>
 			</tr>
