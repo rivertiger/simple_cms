@@ -1,4 +1,6 @@
 class SubjectsController < ApplicationController
+  layout 'admin'
+
   # to handle the url when someone goes to index  
     def index
       list
@@ -25,6 +27,7 @@ class SubjectsController < ApplicationController
     #Save the object
     if @subject.save
       #if save succeeds, redirect to the list action
+      flash[:notice] = "Subject updated."
       redirect_to(:action => 'list')
     else
       #if save fails, redisplay the form so user can fix problems
@@ -51,5 +54,17 @@ class SubjectsController < ApplicationController
         end
     end
   
+    # method for delete function
+    def delete
+        @subject=Subject.find(params[:id])
+      end  
+      
+      # method for destroy function
+    def destroy
+          @subject=Subject.find(params[:id]).destroy
+          flash[:notice] = "Subject destroyed."
+            redirect_to(:action => 'list')
+            
+        end
   
 end
